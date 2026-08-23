@@ -326,6 +326,9 @@ button, input, select, textarea {
 }
 
 .speedometer-svg {
+  width: 260px;
+  height: 260px;
+  max-width: 100%;
   filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.15));
 }
 
@@ -1062,15 +1065,17 @@ button, input, select, textarea {
 
 @media (max-width: 860px) {
   .app-shell {
-    padding: 20px 14px;
+    padding: 16px 14px 40px;
   }
 
   .hero-split {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .metrics-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .bill-highlight-grid {
@@ -1084,20 +1089,277 @@ button, input, select, textarea {
   .control-actions {
     grid-template-columns: 1fr;
   }
-
-  .preset-chips-row {
-    flex-wrap: wrap;
-  }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 10px 10px 24px;
+  }
+
+  .cockpit-container,
+  .dashboard-grid {
+    gap: 10px;
+  }
+
+  .panel {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  /* Compact Mobile Header */
   .header-panel {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .header-brand-wrap {
+    gap: 10px;
+  }
+
+  .station-logo {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: var(--radius-sm);
+  }
+
+  .station-logo svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header-eyebrow-row {
+    gap: 6px;
+    margin-bottom: 0;
+  }
+
+  .eyebrow-tag {
+    font-size: 0.65rem;
+  }
+
+  .eyebrow-sub {
+    display: none;
+  }
+
+  .header-main-title {
+    font-size: 1.02rem;
   }
 
   .header-status-group {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    gap: 6px;
+  }
+
+  .protocol-chip {
+    display: none;
+  }
+
+  .connection-pill {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    gap: 6px;
+  }
+
+  .connection-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Compact Speedometer */
+  .speedometer-card {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+
+  .speedometer-badge {
+    padding: 2px 8px;
+    font-size: 0.68rem;
+  }
+
+  .speedo-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .speedo-target {
+    font-size: 0.7rem;
+  }
+
+  .speedometer-visual-wrap {
+    margin: 0;
+  }
+
+  .speedometer-svg {
+    width: 165px;
+    height: 165px;
+  }
+
+  .speedo-eyebrow {
+    font-size: 0.52rem;
+  }
+
+  .speedo-number {
+    font-size: 1.75rem;
+  }
+
+  .speedo-unit {
+    font-size: 0.75rem;
+  }
+
+  .speedo-progress-chip {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+    margin-top: 1px;
+  }
+
+  .speedo-footer-row {
+    padding: 5px 10px;
+    margin-top: 0;
+    border-radius: var(--radius-sm);
+  }
+
+  .footer-item-label {
+    font-size: 0.55rem;
+  }
+
+  .footer-item-val {
+    font-size: 0.74rem;
+    margin-top: 0;
+  }
+
+  .speedo-footer-divider {
+    height: 14px;
+  }
+
+  /* Compact Controls Panel & Above-the-Fold Action Buttons */
+  .controls-panel {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .controls-topline {
+    align-items: center;
+  }
+
+  .section-eyebrow {
+    font-size: 0.6rem;
+  }
+
+  .controls-title {
+    font-size: 0.9rem;
+    margin-top: 0;
+  }
+
+  .rate-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .preset-chips-row {
+    gap: 4px;
+  }
+
+  .preset-chip {
+    padding: 5px 2px;
+    font-size: 0.72rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .chip-kwh {
+    font-size: 0.58rem;
+  }
+
+  .custom-duration-row {
+    padding: 6px 8px;
+    gap: 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .stepper-wrap {
+    gap: 4px;
+  }
+
+  .input-label {
+    font-size: 0.7rem;
+  }
+
+  .stepper-box {
+    padding: 1px 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  .stepper-btn {
+    width: 22px;
+    height: 22px;
+  }
+
+  .stepper-input {
+    width: 32px;
+    font-size: 0.88rem;
+  }
+
+  .stepper-unit {
+    font-size: 0.68rem;
+  }
+
+  .slider-container {
+    gap: 2px;
+  }
+
+  .slider-ticks {
+    font-size: 0.58rem;
+  }
+
+  .target-preview-bar {
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .preview-label {
+    font-size: 0.65rem;
+  }
+
+  .preview-val {
+    font-size: 0.74rem;
+  }
+
+  .control-actions {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Secondary Panels Compact */
+  .metrics-grid {
+    gap: 8px;
+  }
+
+  .metric-card {
+    padding: 10px 12px;
+    gap: 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .metric-value {
+    font-size: 1.35rem;
+  }
+
+  .session-panel {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .tx-id {
+    font-size: 0.78rem;
   }
 }

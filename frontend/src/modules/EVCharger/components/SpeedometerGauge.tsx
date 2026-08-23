@@ -55,8 +55,6 @@ export function SpeedometerGauge({
       <div className="speedometer-visual-wrap">
         <svg
           viewBox={`0 0 ${size} ${size}`}
-          width={size}
-          height={size}
           className="speedometer-svg"
         >
           <defs>
