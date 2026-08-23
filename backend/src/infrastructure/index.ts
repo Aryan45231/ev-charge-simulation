@@ -9,6 +9,7 @@ import {
 import { logger } from "../utils/logger.js";
 
 let infrastructureReadyPromise: Promise<void> | null = null;
+let optionalMongoStarted = false;
 
 export function ensureInfrastructureReady(): Promise<void> {
   if (!infrastructureReadyPromise) {
@@ -25,10 +26,16 @@ export async function closeInfrastructureConnections(): Promise<void> {
 
 async function connectInfrastructure(): Promise<void> {
   await connectRedisDatabase();
+  startOptionalMongoConnection();
+}
 
-  try {
-    await connectMongoDatabase();
-  } catch (error) {
-    logger.warn("MongoDB connection skipped; Redis session state remains available", error);
+function startOptionalMongoConnection(): void {
+  if (optionalMongoStarted) {
+    return;
   }
+
+  optionalMongoStarted = true;
+  connectMongoDatabase().catch((error) => {
+    logger.warn("MongoDB connection skipped; Redis session state remains available", error);
+  });
 }
