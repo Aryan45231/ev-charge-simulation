@@ -1,17 +1,16 @@
-import { WebSocketServer } from "ws";
+// Local Node entrypoint: starts the shared application server on a port for development/production runtime.
 import {
-  closeMongoDatabase,
-  connectMongoDatabase
-} from "./infrastructure/mongodb/index.js";
+  closeInfrastructureConnections,
+  ensureInfrastructureReady
+} from "./infrastructure/index.js";
 import {
-  closeRedisConnection,
-  connectRedisDatabase
-} from "./infrastructure/redis/redisClient.js";
-import { createWebSocketServer } from "./server/websocketServer.js";
+  createApplicationServer,
+  listenApplicationServer
+} from "./server/websocketServer.js";
 
-await connectMongoDatabase();
-await connectRedisDatabase();
-const websocketServer = createWebSocketServer(WebSocketServer);
+await ensureInfrastructureReady();
+const { httpServer, webSocketServer } = createApplicationServer();
+listenApplicationServer(httpServer);
 let isShuttingDown = false;
 
 async function shutdown() {
@@ -20,9 +19,9 @@ async function shutdown() {
   }
 
   isShuttingDown = true;
-  websocketServer.close();
-  await closeMongoDatabase();
-  await closeRedisConnection();
+  webSocketServer.close();
+  httpServer.close();
+  await closeInfrastructureConnections();
 }
 
 process.on("SIGINT", shutdown);

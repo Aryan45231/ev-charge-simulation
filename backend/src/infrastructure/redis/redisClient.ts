@@ -27,7 +27,10 @@ redisClient.on("error", (error: Error) => {
 
 export async function connectRedisDatabase(): Promise<void> {
   try {
-    await redisClient.connect();
+    if (redisClient.status !== "ready") {
+      await redisClient.connect();
+    }
+
     await redisClient.ping();
   } catch (error) {
     logger.error("Failed to connect to Redis", error);

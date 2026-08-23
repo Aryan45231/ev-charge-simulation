@@ -22,10 +22,10 @@ Simple TypeScript project that simulates an EV charger talking to a central WebS
 |   |   |   `-- redis               # Redis client and key builders
 |   |   |-- protocol
 |   |   |   `-- webSocket           # Message parser and protocol types
-|   |   |-- server                  # WebSocket server setup
+|   |   |-- server                  # Shared Express/WebSocket server
 |   |   |-- types                   # Global backend types
 |   |   |-- utils                   # Logger, socket helpers, responses
-|   |   `-- index.ts                # Backend entry point
+|   |   |-- index.ts                # Local runtime entry point
 |   |-- test                        # Backend tests
 |   |-- .env.example
 |   |-- package.json
@@ -42,7 +42,6 @@ Simple TypeScript project that simulates an EV charger talking to a central WebS
 |   |-- .env.example
 |   |-- package.json
 |   `-- tsconfig.json
-`-- docker-compose.yml
 ```
 
 ## Backend Setup
@@ -87,10 +86,9 @@ VITE_LOG_LEVEL=info
 
 ## Start Project
 
-Start local Redis if needed, then run backend and frontend:
+Start backend and frontend:
 
 ```bash
-docker compose up -d
 cd backend
 npm run dev
 cd frontend
